@@ -7,11 +7,16 @@
 		// Get data from FORM
 		$username = $_POST['username'];
 		$password = $_POST['password'];
+		//user type selection
+		//$usertype = $_POST['usertype'];
 
 		if($username == '')
 			$errMsg = 'Enter username';
 		if($password == '')
 			$errMsg = 'Enter password';
+		// for user type
+		//if($usertype == '')
+		//	$errMsg = 'Which group are you? Select at one.';
 
 		if($errMsg == '') {
 			try {
@@ -35,7 +40,7 @@
 						exit;
 					}
 					else
-						$errMsg = 'Password not match.';
+						$errMsg = 'Something went wrong.';
 				}
 			}
 			catch(PDOException $e) {
@@ -47,12 +52,7 @@
 
 <html>
 <head><title>Login</title></head>
-	<style>
-	html, body {
-		margin: 1px;
-		border: 0;
-	}
-	</style>
+	
 	<!-- css link for boostrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -67,9 +67,25 @@
 			<div style="background-color:#006D9C; color:#FFFFFF; padding:10px;"><b>Login</b></div>
 			<div style="margin: 15px">
 				<form action="" method="post">
-					<input type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'] ?>" autocomplete="off" class="box"/><br /><br />
-					<input type="password" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'] ?>" autocomplete="off" class="box" /><br/><br />
-					<input type="submit" name='login' value="Login" class='submit'/><br />
+					<div class="form-group">
+						<input type="text" name="username" class="" placeholder="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'] ?>" autocomplete="off" class="box"/>
+					</div>
+				
+					<div class="form-group">
+						<input type="password" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'] ?>" autocomplete="off" class="box" />
+					</div>
+					<!--
+					<div class="form-group">
+						<label>We are: </label>
+						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Supermarket | 
+						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Organization |
+						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Farmers 
+					</div>
+					-->
+					<div class="form-group">
+					<input type="submit" name='login' value="Login" class="btn btn-danger"/>
+					</div>
+					<br />
 				</form>
 			</div>
 		</div>
