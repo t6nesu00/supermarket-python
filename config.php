@@ -5,7 +5,7 @@ session_start();
 //define database
 define('dbhost','localhost');
 define('dbuser','root');
-define('dbpass','password');
+define('dbpass','mysql');
 define('dbname','python');
 
 // connecting to database

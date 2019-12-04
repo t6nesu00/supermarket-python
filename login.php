@@ -8,15 +8,15 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		//user type selection
-		//$usertype = $_POST['usertype'];
+		$usertype = $_POST['usertype'];
 
 		if($username == '')
 			$errMsg = 'Enter username';
 		if($password == '')
 			$errMsg = 'Enter password';
 		// for user type
-		//if($usertype == '')
-		//	$errMsg = 'Which group are you? Select at one.';
+		if($usertype == '')
+			$errMsg = 'Which group are you? Select one.';
 
 		if($errMsg == '') {
 			try {
@@ -30,13 +30,22 @@
 					$errMsg = "User $username not found.";
 				}
 				else {
-					if($password == $data['password']) {
+					if($password == $data['password'] && $usertype == $data['usertype']) {
 						$_SESSION['name'] = $data['name'];
 						$_SESSION['username'] = $data['username'];
 						$_SESSION['password'] = $data['password'];
 						$_SESSION['usertype'] = $data['usertype'];
 
-						header('Location: dashboard.php');
+						if($data['usertype'] == 'supermarket') {
+							header('Location: supermarket.php');
+						}
+						elseif($data['usertype'] == 'organization'){
+							header('Location: organization.php');
+						}
+						
+						//$_SESSION['usertype'] = $supermarket;
+
+						//header('Location: supermarket.php');
 						exit;
 					}
 					else
@@ -74,14 +83,17 @@
 					<div class="form-group">
 						<input type="password" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'] ?>" autocomplete="off" class="box" />
 					</div>
-					<!--
+					
 					<div class="form-group">
-						<label>We are: </label>
-						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Supermarket | 
-						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Organization |
-						<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Farmers 
+						<label for="usertype">We are: </label>
+						<!--<input type="radio" name="usertype" value="<?php if(isset($_POST['usertype'])) echo $_POST['usertype'] ?>" autocomplete="off" class="box" />&nbsp; Supermarket | 
+						-->
+						<input type="radio" name="usertype" value="supermarket" class="radio-custome" required> &nbsp;Supermarket |
+						<input type="radio" name="usertype" value="organization" class="radio-custome" required> &nbsp;Organization |
+						<input type="radio" name="usertype" value="farmer" class="radio-custome" required> &nbsp;Farmer 
+						
 					</div>
-					-->
+					
 					<div class="form-group">
 					<input type="submit" name='login' value="Login" class="btn btn-danger"/>
 					</div>

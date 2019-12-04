@@ -5,7 +5,7 @@
 ?>
 
 <html>
-<head><title>Dashboard</title></head>
+<head><title>Organization Dashboard</title></head>
 	<style>
 	html, body {
 		margin: 1px;
