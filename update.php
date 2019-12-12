@@ -48,8 +48,8 @@
 	}
 	</style>
 <body>
-	<div align="center">
-		<div style=" border: solid 1px #006D9C; " align="left">
+	<div>
+		<div style=" border: solid 1px #006D9C;">
 			<?php
 				if(isset($errMsg)){
 					echo '<div style="color:#FF0000;text-align:center;font-size:17px;">'.$errMsg.'</div>';
