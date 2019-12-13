@@ -12,7 +12,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact.html">Contact us</a>
+          <a class="nav-link js-scroll-trigger" href="contact.php">Contact us</a>
           <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="register.php">Register</a>
             </li>

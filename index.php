@@ -12,13 +12,6 @@
 <body>
 	<?php include 'header.php';?>
     <!-- display error message -->
-	<div style="align: center;">
-    <?php
-				if(isset($errMsg)){
-					echo '<div style="color:#FF0000;text-align:center;font-size:18px;">'.$errMsg.'</div>';
-				}
-	?>			
-    </div>
 
 	<!-- container of the page -->
 	

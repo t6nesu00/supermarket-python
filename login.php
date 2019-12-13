@@ -3,13 +3,11 @@
 
 	if(isset($_POST['login'])) {
 		$errMsg = '';
-
 		// Get data from FORM
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		//user type selection
 		$usertype = $_POST['usertype'];
-
 		if($username == '')
 			$errMsg = 'Enter username';
 		if($password == '')
@@ -17,7 +15,6 @@
 		// for user type
 		if($usertype == '')
 			$errMsg = 'Which group are you? Select one.';
-
 		if($errMsg == '') {
 			try {
 				$stmt = $connect->prepare('SELECT id, name, username, password, email, address, usertype FROM users WHERE username = :username');
@@ -42,10 +39,6 @@
 						elseif($data['usertype'] == 'organization'){
 							header('Location: users/organization/organization.php');
 						}
-						
-						//$_SESSION['usertype'] = $supermarket;
-
-						//header('Location: supermarket.php');
 						exit;
 					}
 					else
